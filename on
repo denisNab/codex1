@@ -1,0 +1,102 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+
+int main() {
+    const int SIZE = 10;
+    int arr[SIZE];
+
+    srand(time(0));
+
+    cout << "Исходный массив: ";
+    for(int i = 0; i < SIZE; i++) {
+        arr[i] = rand() % 100 + 1;
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    int *ptr = arr;
+
+    cout << "\nДоступ через указатель: ";
+    for(int i = 0; i < SIZE; i++) {
+        cout << *(ptr + i) << " ";
+    }
+    cout << endl;
+
+    int *minPtr = arr;
+    int *maxPtr = arr;
+
+    for(int i = 1; i < SIZE; i++) {
+        if(*(arr + i) < *minPtr) {
+            minPtr = arr + i;
+        }
+        if(*(arr + i) > *maxPtr) {
+            maxPtr = arr + i;
+        }
+    }
+
+    cout << "\nМинимальный элемент: " << *minPtr
+         << " (индекс " << minPtr - arr << ")" << endl;
+    cout << "Максимальный элемент: " << *maxPtr
+         << " (индекс " << maxPtr - arr << ")" << endl;
+
+    int sum = 0;
+    int *current = arr;
+    for(int i = 0; i < SIZE; i++) {
+        sum += *current;
+        current++;
+    }
+    cout << "Сумма элементов: " << sum << endl;
+
+    cout << "\nЧетные числа в массиве: ";
+    int evenCount = 0;
+    for(int i = 0; i < SIZE; i++) {
+        if(*(ptr + i) % 2 == 0) {
+            cout << *(ptr + i) << " ";
+            evenCount++;
+        }
+    }
+    cout << "\nКоличество четных чисел: " << evenCount << endl;
+
+    cout << "\nМассив в обратном порядке: ";
+    int *start = arr;
+    int *end = arr + SIZE - 1;
+
+    while(start < end) {
+        int temp = *start;
+        *start = *end;
+        *end = temp;
+        start++;
+        end--;
+    }
+
+    for(int i = 0; i < SIZE; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    cout << "\nПростые числа в массиве: ";
+    for(int i = 0; i < SIZE; i++) {
+        int num = *(ptr + i);
+        bool isPrime = true;
+
+        if(num < 2) {
+            isPrime = false;
+        } else {
+            for(int j = 2; j * j <= num; j++) {
+                if(num % j == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+        }
+
+        if(isPrime) {
+            cout << num << " ";
+        }
+    }
+    cout << endl;
+
+    return 0;
+}
