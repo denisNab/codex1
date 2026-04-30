@@ -9,7 +9,7 @@ int main() {
 
     srand(time(0));
 
-    cout << "Исходный массив: ";
+    cout << "Original array: ";
     for(int i = 0; i < SIZE; i++) {
         arr[i] = rand() % 100 + 1;
         cout << arr[i] << " ";
@@ -18,7 +18,7 @@ int main() {
 
     int *ptr = arr;
 
-    cout << "\nДоступ через указатель: ";
+    cout << "\nPointer access: ";
     for(int i = 0; i < SIZE; i++) {
         cout << *(ptr + i) << " ";
     }
@@ -36,10 +36,10 @@ int main() {
         }
     }
 
-    cout << "\nМинимальный элемент: " << *minPtr
-         << " (индекс " << minPtr - arr << ")" << endl;
-    cout << "Максимальный элемент: " << *maxPtr
-         << " (индекс " << maxPtr - arr << ")" << endl;
+    cout << "\nMinimum element: " << *minPtr
+         << " (index " << minPtr - arr << ")" << endl;
+    cout << "Maximum element: " << *maxPtr
+         << " (index " << maxPtr - arr << ")" << endl;
 
     int sum = 0;
     int *current = arr;
@@ -47,9 +47,9 @@ int main() {
         sum += *current;
         current++;
     }
-    cout << "Сумма элементов: " << sum << endl;
+    cout << "Sum of elements: " << sum << endl;
 
-    cout << "\nЧетные числа в массиве: ";
+    cout << "\nEven numbers in array: ";
     int evenCount = 0;
     for(int i = 0; i < SIZE; i++) {
         if(*(ptr + i) % 2 == 0) {
@@ -57,9 +57,9 @@ int main() {
             evenCount++;
         }
     }
-    cout << "\nКоличество четных чисел: " << evenCount << endl;
+    cout << "\nCount of even numbers: " << evenCount << endl;
 
-    cout << "\nМассив в обратном порядке: ";
+    cout << "\nArray in reverse order: ";
     int *start = arr;
     int *end = arr + SIZE - 1;
 
@@ -76,7 +76,7 @@ int main() {
     }
     cout << endl;
 
-    cout << "\nПростые числа в массиве: ";
+    cout << "\nPrime numbers in array: ";
     for(int i = 0; i < SIZE; i++) {
         int num = *(ptr + i);
         bool isPrime = true;
